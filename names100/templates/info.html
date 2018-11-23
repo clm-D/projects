@@ -1,0 +1,23 @@
+
+{% extends 'base_main.html' %}
+
+
+{% block title %}
+    {{ i }}
+{% endblock %}
+
+{% block content %}
+
+    <div style="background-color: white;">
+        <div style="width: 40%; margin-left: 50px; margin-top: 100px;">
+            <div>名字：{{ name.0.name }}</div>
+            <div>人数：{{ name.0.nums }}</div>
+            <div>男性名字所占比例：{{ name.0.boy_progress }}%</div>
+            <div>女性名字所占比例：{{ name.0.girl_progress }}%</div>
+            <div>总解：{{ name.0.total_solution }}</div>
+            <div>五行：{{ name.0.wuxing }}</div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+
+{% extends 'base_main.html' %}
+
+{% block title %}
+    {{ i }}姓之家
+{% endblock %}
+
+{% block content %}
+
+    <div style="background-color: aquamarine; text-align: center">
+        <div style="height: 50px; width: 100%;margin-top: -50px; position: fixed; background-color: cornflowerblue" align="center">
+            <input type="text" style=" margin-top: 10px; height: 45%; width: 30%" placeholder="搜索名字 ">
+            <input type="button" style=" margin-top: 10px; height: 50%;" value="搜索">
+        </div>
+        <table align="center" style="margin-top: 50px;">
+            {% for page in pages %}
+                <tr>
+                    {% for names in page %}
+                        <td style="background-color: aliceblue;">
+                            <a href="{% url 'resgain:info' names.name %}" style="text-decoration: none; color: gray;">{{ names.name }}</a>
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div style="background-color: aquamarine; text-align: center">
+        <aside class="paging">
+            <a>当前{{ pages.number }}页</a>
+            <a style="text-decoration: none" href="{% url 'resgain:names' pages.0.0.surname %}">首页</a>
+
+            {% for j in pages.paginator.page_range %}
+                <a style="text-decoration: none; color: red;" href="{% url 'resgain:names' pages.0.0.surname %}?page={{ j }}">{{ j }}</a>
+            {% endfor %}
+
+            <a style="text-decoration: none" href="{% url 'resgain:names' pages.0.0.surname %}?page={{ page.paginator.num_pages }}">尾页</a>
+
+        </aside>
+    </div>
+
+
+{% endblock %}
+
+{% block js %}
+    <script src="/static/js/names.js"></script>
+{% endblock %}

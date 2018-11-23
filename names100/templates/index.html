@@ -1,0 +1,29 @@
+
+{% extends 'base_main.html' %}
+
+{% block title %}
+    名字大全
+{% endblock %}
+
+
+{% block content %}
+
+    <div style="background-color: aquamarine; text-align: center">
+        <div style="height: 50px; width: 100%;margin-top: -50px; position: fixed; background-color: cornflowerblue" align="center">
+            <input type="text" style=" margin-top: 10px; height: 45%; width: 30%" placeholder="搜索名字 ">
+            <input type="button" style=" margin-top: 10px; height: 50%;" value="搜索">
+        </div>
+        <table align="center" style="margin-top: 50px;">
+            {% for list1 in xs_list %}
+                <tr>
+                    {% for xs in list1 %}
+                        <td style="background-color: aliceblue;">
+                            <a href="{% url 'resgain:names' xs.surname %}" style="text-decoration: none; color: gray;" title="	{{ xs.surname }}姓名字大全共有{{ xs.surname }}姓名字{{ xs.nums }}个">{{ xs.surname }}姓名字大全</a>
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
